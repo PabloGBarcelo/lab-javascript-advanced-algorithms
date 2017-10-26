@@ -1,28 +1,24 @@
-// Paint Boxes
-
-
 // Buttons click
 $('document').ready(function(){
   var myStack = new StackDataStructure();
   // First item is always painted (MAX_SIZE MIN 1)
-  for (var x=1; x < myStack.MAX_SIZE ; x++){
-    console.log($(".stack:first"));
-    $(".stack:first").clone().appendTo( ".stacklist" );
+  for ( var x=1 ; x < myStack.MAX_SIZE ; x++){
+    console.log($('.stack:first'));
+    $( '.stack:first' ).clone().appendTo( '.stacklist' );
   }
 
-  $('.addStack').on('click',function(){
-    var result = myStack.push($('.stackData > input').val());
-    if (result == ""){
+  $( '.addStack' ).on( 'click' ,function(){
+    var result = myStack.push($( '.stackData > input' ).val());
+    if (result == ''){
       result = 'NO DATA';
     }
     if (result == 'Stack Overflow'){
-        $('.stack.full:first > p').addClass('warning');
-        $('.stack.full:first > p').html('Stack Overflow');
-    }
-    else{
-      $('.stack > p').removeClass('warning');
-      $('.stack.empty:last > p').html(result);
-      $('.stack.empty:last').toggleClass("empty full");
+        $( '.stack.full:first > p' ).addClass( 'warning' );
+        $( '.stack.full:first > p' ).html( 'Stack Overflow' );
+    } else {
+      $( '.stack > p' ).removeClass( 'warning' );
+      $( '.stack.empty p:last' ).html(result);
+      $( '.stack.empty:last' ).toggleClass( 'empty full' );
     }
   });
 
@@ -36,8 +32,8 @@ $('document').ready(function(){
       $('.stack > p').removeClass('warning');
       $('.stack.full:first > p').html('EMPTY');
       $('.stack.full:first').toggleClass('empty full');
-      if (items == ""){
-          items = "NO DATA";
+      if (items == ''){
+          items = 'NO DATA';
       }
       $('.stackh2 span').html(' - exit: '+items);
     }

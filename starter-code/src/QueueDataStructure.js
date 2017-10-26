@@ -4,36 +4,22 @@ function QueueDataStructure() {
 }
 
 QueueDataStructure.prototype.isEmpty = function(){
-  if (this.queueControl.length == 0){
-    return true;
-  }else {
-    return false;
-  }
+  return this.queueControl.length === 0 ? true : false;
 };
 
 QueueDataStructure.prototype.canEnqueue = function(){
-  if (this.queueControl.length < this.MAX_SIZE){
-    return true;
-  }
-  else{
-    return false;
-  }
+  return this.queueControl.length < this.MAX_SIZE ? true : false;
 };
 
 QueueDataStructure.prototype.enqueue = function(item){
-  if (this.canEnqueue()){
-    this.queueControl.unshift(item);
-    return [this.queueControl[0]];
-  }else{
+  if ( this.canEnqueue() ){
+    this.queueControl.unshift( item );
+    return [ this.queueControl[0] ];
+  } else {
     return 'Queue Overflow';
   }
 };
 
 QueueDataStructure.prototype.dequeue = function(){
-  if(this.isEmpty()){
-    return 'Queue Underflow';
-  }
-  else{
-    return this.queueControl.pop();
-  }
+  return this.isEmpty() ? 'Queue Underflow' : this.queueControl.pop();
 };
